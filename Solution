@@ -1,0 +1,57 @@
+using System;
+using System.Reflection.Metadata.Ecma335;
+
+namespace Practical_Project_Random_Sentences_Generator
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, this is your first random-generated sentence:");
+
+            string[] names = { "Peter", "Michell", "Jane", "Steve" };
+            string[] places = { "Sofia", "Plovdiv", "Varna", "Burgas" };
+            string[] verbs = { "eats", "holds", "sees", "plays with", "brings" };
+            string[] nouns = { "stones", "cake", "apple", "laptop", "bikes" };
+            string[] adverbs = { "slowly", "diligently", "warmly", "sadly", "rapidly" };
+            string[] details = { "near the river", "at home", "in the park" };
+
+            while (true)
+            {
+                string randomName = GetRandomWord(names);
+                string randomPlace = GetRandomWord(places);
+                string randomVerbs = GetRandomWord(verbs);
+                string randomNouns = GetRandomWord(nouns);
+                string randomAdverbs = GetRandomWord(adverbs);
+                string randomDetails = GetRandomWord(details);
+
+                string who = $"{randomName} from {randomPlace}";
+                string action = $"{randomAdverbs} {randomVerbs} {randomNouns} {randomDetails}";
+                string sentence = $"{who} {action}";
+                Console.WriteLine(sentence);        
+                Console.WriteLine("Click [Enter] to generate a new one");
+                Console.WriteLine();
+
+                string command = Console.ReadLine();
+
+                if (command == "ENTER")
+                {
+                    continue;
+                }
+            }                 
+
+        }
+
+        static string GetRandomWord(string[] words)
+        {
+            Random random = new Random();
+            int randomIndex = random.Next(words.Length);
+            string word = words[randomIndex];
+
+            return word;
+        }
+
+
+
+    }
+}
